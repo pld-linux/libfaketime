@@ -1,7 +1,7 @@
 Summary:	Report faked system time
 Name:		libfaketime
 Version:	0.9.6
-Release:	1
+Release:	2
 License:	GPL v2
 Group:		Libraries
 Source0:	http://www.code-wizards.com/projects/libfaketime/%{name}-%{version}.tar.gz
@@ -17,7 +17,9 @@ to change the system-wide time.
 %setup -q
 
 %build
-%{__make}
+%{__make} \
+	PREFIX=%{_prefix} \
+	LIBDIRNAME=/%{_lib}/faketime \
 
 %install
 rm -rf $RPM_BUILD_ROOT
