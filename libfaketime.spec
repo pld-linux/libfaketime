@@ -34,5 +34,5 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(644,root,root,755)
 %doc NEWS README TODO
 %attr(755,root,root) %{_bindir}/faketime
-%attr(755,root,root) %{_libdir}/faketime/lib%{name}*.so.1
+%attr(755,root,root) %{_libdir}/faketime/%{name}*.so.1
 %{_mandir}/man1/faketime.1*
