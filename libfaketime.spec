@@ -1,7 +1,7 @@
 Summary:	Report faked system time
 Name:		libfaketime
 Version:	0.9.6
-Release:	2
+Release:	3
 License:	GPL v2
 Group:		Libraries
 Source0:	http://www.code-wizards.com/projects/libfaketime/%{name}-%{version}.tar.gz
@@ -36,5 +36,6 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(644,root,root,755)
 %doc NEWS README TODO
 %attr(755,root,root) %{_bindir}/faketime
+%dir %{_libdir}/faketime
 %attr(755,root,root) %{_libdir}/faketime/%{name}*.so.1
 %{_mandir}/man1/faketime.1*
