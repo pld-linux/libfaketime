@@ -1,12 +1,13 @@
 Summary:	Report faked system time
 Name:		libfaketime
-Version:	0.9.6
-Release:	3
+Version:	0.9.12
+Release:	1
 License:	GPL v2
 Group:		Libraries
-Source0:	http://www.code-wizards.com/projects/libfaketime/%{name}-%{version}.tar.gz
-# Source0-md5:	f522f899d65a057ad69cff9896c75f78
-URL:		http://www.code-wizards.com/projects/libfaketime/
+Source0:	https://github.com/wolfcw/libfaketime/archive/refs/tags/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
+# Source0-md5:	ad359ea78db3d28ba2520c34800306ba
+Patch0:		%{name}-gcc16-const.patch
+URL:		https://github.com/wolfcw/libfaketime
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
@@ -15,9 +16,12 @@ to change the system-wide time.
 
 %prep
 %setup -q
+%patch -P0 -p1
 
 %build
 %{__make} \
+	FAKETIME_COMPILE_CFLAGS="%{rpmcflags}" \
+	FAKETIME_LINK_FLAGS="%{rpmldflags}" \
 	PREFIX=%{_prefix} \
 	LIBDIRNAME=/%{_lib}/faketime \
 
@@ -28,6 +32,8 @@ rm -rf $RPM_BUILD_ROOT
 	PREFIX=%{_prefix} \
 	LIBDIRNAME=/%{_lib}/faketime \
 	DESTDIR=$RPM_BUILD_ROOT
+
+%{__rm} -r $RPM_BUILD_ROOT%{_datadir}/doc/faketime
 
 %clean
 rm -rf $RPM_BUILD_ROOT
