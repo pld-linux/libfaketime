@@ -1,12 +1,11 @@
 Summary:	Report faked system time
 Name:		libfaketime
-Version:	0.9.12
+Version:	0.9.14
 Release:	1
 License:	GPL v2
 Group:		Libraries
 Source0:	https://github.com/wolfcw/libfaketime/archive/refs/tags/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
-# Source0-md5:	ad359ea78db3d28ba2520c34800306ba
-Patch0:		%{name}-gcc16-const.patch
+# Source0-md5:	e03fea5246b7dd07b5d9c43396e9b65d
 URL:		https://github.com/wolfcw/libfaketime
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
@@ -16,7 +15,6 @@ to change the system-wide time.
 
 %prep
 %setup -q
-%patch -P0 -p1
 
 %build
 %{__make} \
